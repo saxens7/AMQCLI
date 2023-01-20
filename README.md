@@ -4,7 +4,7 @@ An ActiveMQ - Full featured JMS Client to  send,receive messages to both Queue a
 # Prerequisite 
 Install JDK 
 ```sh
-sudo zypper --non-interactive install java-17-openjdk-devel '
+sudo zypper --non-interactive install java-17-openjdk-devel
 ```
 # Build
 
