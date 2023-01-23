@@ -81,7 +81,7 @@ public class QueueReceiver {
             }
     else
     {
-        LOGGER.info("Taking Already Entered Username,Password and ActiveMQ URL");
+        System.out.print("Taking Already Entered Username,Password and ActiveMQ URL");
     }
     if (un.equals(null) || pw.equals(null) || url.equals(null) || un.trim().length() == 0 || pw.trim().length() == 0 || url.trim().length() == 0 || un.equals("") || pw.equals("") || url.equals(""))
     {
@@ -144,22 +144,21 @@ public class QueueReceiver {
      TextMessage textMessage = (TextMessage) message;
      
       // retrieve the message content
-      String text = textMessage.getText();
-      LOGGER.info("received message with text='{}'",
-          text);
+      String text = textMessage.getText();      
+      System.out.print( String.format("received message with text=%s", text));
 
       if (acknowledge) {
         // acknowledge the successful processing of the message
         message.acknowledge();
-        LOGGER.info("message acknowledged");
+        System.out.print("message acknowledged");
       } else {
-        LOGGER.info("message not acknowledged");
+        System.out.print("message not acknowledged");
       }
       
       ReceivedMessage = text;
-      LOGGER.info(ReceivedMessage);
+      System.out.print(ReceivedMessage);
     } else {
-      LOGGER.info("no more messages to read from the queue");
+      System.out.print("no more messages to read from the queue");
       break;
     }
    
@@ -176,21 +175,20 @@ public class QueueReceiver {
      
       // retrieve the message content
       String text = textMessage.getText();
-      LOGGER.info("\nreceived message with text='{}'",
-          text);
+      System.out.print(String.format("received message with text=%s",text));
 
       if (acknowledge) {
         // acknowledge the successful processing of the message
         message.acknowledge();
-        LOGGER.info("message acknowledged");
+        System.out.print("message acknowledged");
       } else {
-        LOGGER.info("message not acknowledged");
+        System.out.print("message not acknowledged");
       }
       
       ReceivedMessage = text;
-      LOGGER.info(ReceivedMessage);
+      System.out.print(ReceivedMessage);
     } else {
-      LOGGER.info("no more message to read from the queue");
+      System.out.print("no more message to read from the queue");
       return ReceivedMessage;
     }
     
@@ -218,7 +216,7 @@ public class QueueReceiver {
       if (readmode.equals(null) || readmode.trim().length() == 0 || readmode.equals("") )
       {
           LOGGER.error("Argument is mendatory");
-          LOGGER.info("java -cp AMQ-QUEUE-CLI.jar QueueReceiver [onebyone|allatonce]");
+          System.out.print("java -cp AMQ-QUEUE-CLI.jar QueueReceiver [onebyone|allatonce]");
           exit(2);
       }
       
@@ -231,7 +229,7 @@ public class QueueReceiver {
               {
                   LOGGER.error("ERROR: IndexOutofBoundException");
                   LOGGER.error("Argument is mendatory");
-                  LOGGER.info("java -cp AMQ-QUEUE-CLI.jar QueueReceiver [onebyone|allatonce]");
+                  System.out.print("java -cp AMQ-QUEUE-CLI.jar QueueReceiver [onebyone|allatonce]");
                   exit(2);
               }
       
@@ -254,7 +252,7 @@ public class QueueReceiver {
           }
           else if ( QNI == "" || QNI.equals(null) || QNI.trim().length() == 0 )
           {
-            LOGGER.info("Taking the Already Entered QueueName - "+QN);
+            System.out.print("Taking the Already Entered QueueName - "+QN);
           }
           else
           {
@@ -311,4 +309,5 @@ public class QueueReceiver {
       }
       } 
   }
+
 
